@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Objects;
 
 @Controller
 public class UploadController {
@@ -19,9 +22,9 @@ public class UploadController {
 
     @PostMapping("/upload/file")
     @ResponseBody
-    public String upload(@RequestParam("file")MultipartFile multipartFile, HttpServletRequest request){
+    public Map<String, Object> upload(@RequestParam("file")MultipartFile multipartFile, HttpServletRequest request){
          if (multipartFile.isEmpty()){
-              return "文件有误";
+              return  Collections.emptyMap();
          }
         long size = multipartFile.getSize();
         String dir = request.getParameter("dir");

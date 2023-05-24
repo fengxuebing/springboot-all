@@ -5,6 +5,8 @@ spring:
   freemarker:
     suffix: .html
     cache: false
+  profiles:
+    active: dev
   servlet:
     multipart:
       enabled: true

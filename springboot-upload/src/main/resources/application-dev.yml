@@ -1,0 +1,4 @@
+file:
+  staticPath: http://localhost:8777
+  staticPatternPath: /upimage/**
+  uploadFolder: D:/mysoft/temp/

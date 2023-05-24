@@ -1,0 +1,4 @@
+file:
+  staticPath: https://www.abc.com
+  staticPatternPath: /upimage/**
+  uploadFolder: D:/mysoft/temp/
