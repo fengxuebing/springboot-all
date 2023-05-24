@@ -2,6 +2,7 @@ package com.secbro.springboot.eaysexcel.controller;
 
 import com.alibaba.excel.EasyExcel;
 import com.secbro.springboot.eaysexcel.entity.Member;
+import com.secbro.springboot.eaysexcel.entity.RoadDataNew;
 import com.secbro.springboot.eaysexcel.listener.MemberExcelListener;
 import com.secbro.springboot.eaysexcel.service.MemberService;
 import com.secbro.springboot.eaysexcel.util.CommonCellStyleStrategy;
@@ -94,5 +95,40 @@ public class MemberController {
 		EasyExcel.read(file.getInputStream(), Member.class, new MemberExcelListener()).sheet().doRead();
 	}
 
+	/**
+	 * excel 模版下载
+	 *
+	 */
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	public void download(HttpServletResponse response) throws IOException {
+		// 设置文本内省
+		response.setContentType("application/vnd.ms-excel");
+		// 设置字符编码
+		response.setCharacterEncoding("utf-8");
+		// 设置响应头
+		response.setHeader("Content-disposition", "attachment;filename=member.xlsx");
+		EasyExcel.write(response.getOutputStream(), Member.class).sheet("成员列表").doWrite(null);
+	}
+
+
+	@RequestMapping(value = "/downloadRoadData", method = RequestMethod.GET)
+	public void downloadRoadData(HttpServletResponse response) throws IOException {
+		// 设置文本内省
+		response.setContentType("application/vnd.ms-excel");
+		// 设置字符编码
+		response.setCharacterEncoding("utf-8");
+		// 设置响应头
+		response.setHeader("Content-disposition", "attachment;filename=member.xlsx");
+		EasyExcel.write(response.getOutputStream(), RoadDataNew.class).sheet("成员列表").doWrite(null);
+	}
+
+	/***
+	    * @MethodName:
+	    * @Description: 把文件放在resource下然后返回可下载路径
+	    * @Param:
+	    * @Return:
+	    * @Author: Gientech
+	    * @Date: 2023/5/18 15:45
+	    **/
 
 }

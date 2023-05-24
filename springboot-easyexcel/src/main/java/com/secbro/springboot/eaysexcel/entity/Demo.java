@@ -1,6 +1,8 @@
 package com.secbro.springboot.eaysexcel.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName Demo

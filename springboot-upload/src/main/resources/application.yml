@@ -5,3 +5,12 @@ spring:
   freemarker:
     suffix: .html
     cache: false
+  servlet:
+    multipart:
+      enabled: true
+      # 单个文件大小
+      max-file-size: 10MB
+      # 总文件大小
+      max-request-size: 10MB
+      # 临时文件路径
+      location: D://mysoft
