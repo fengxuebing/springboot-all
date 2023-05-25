@@ -1,6 +1,8 @@
 server:
   port: 8777
 
+endpoint: oss-cn-beijing.aliyuncs.com
+
 spring:
   freemarker:
     suffix: .html
