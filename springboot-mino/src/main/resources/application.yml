@@ -1,0 +1,15 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+#minio配置
+  minio:
+    access-key: AKIAIOSFODNN7EXAMPLE
+    secret-key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    url: http://localhost:9000
+    bucket-name: fdb
+  thymeleaf:
+    cache: false
+server:
+  port: 8082
