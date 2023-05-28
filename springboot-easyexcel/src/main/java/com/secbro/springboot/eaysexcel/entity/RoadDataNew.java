@@ -10,6 +10,7 @@ package com.secbro.springboot.eaysexcel.entity;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -20,6 +21,7 @@ import java.util.Date;
  * @author qingyun
  * @Date 2021年5月19日 下午4:51:26
  */
+@Data
 public class RoadDataNew implements Serializable {
     private static final long serialVersionUID = 1L;
     @ExcelIgnore

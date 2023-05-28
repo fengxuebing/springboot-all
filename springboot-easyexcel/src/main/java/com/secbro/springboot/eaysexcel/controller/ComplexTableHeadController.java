@@ -5,11 +5,14 @@ import com.alibaba.excel.write.metadata.style.WriteCellStyle;
 import com.alibaba.excel.write.metadata.style.WriteFont;
 import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
 import com.secbro.springboot.eaysexcel.entity.Demo;
+import com.secbro.springboot.eaysexcel.service.RoadDataService;
 import com.secbro.springboot.eaysexcel.util.CustomizeColumnWidth;
 import org.apache.poi.ss.usermodel.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -25,6 +28,9 @@ import java.util.List;
  **/
 @RestController
 public class ComplexTableHeadController {
+
+    @Autowired
+    private RoadDataService roadDataService;
 
 
     @GetMapping("exportData")
@@ -138,6 +144,24 @@ public class ComplexTableHeadController {
         // 这个策略是 头是头的样式 内容是内容的样式 其他的策略可以自己实现
         HorizontalCellStyleStrategy horizontalCellStyleStrategy = new HorizontalCellStyleStrategy(headWriteCellStyle, contentWriteCellStyle);
         return horizontalCellStyleStrategy;
+    }
+
+
+    //  excel复杂表头导出 通过easyexcel导出excel 单个sheet
+    @RequestMapping(value = { "/easyexcel/download" }, produces = { "text/html;charset=UTF-8" })
+    @ResponseBody
+    public void download(HttpServletRequest request, HttpServletResponse response) {
+        response.setCharacterEncoding("UTF-8");
+        //String id = request.getParameter("id");
+        roadDataService.downloadRow(response);
+    }
+
+    // Excel单个文件单个sheet导入
+    @RequestMapping(value = { "/easyexcel/upload" }, produces = { "text/html;charset=UTF-8" })
+    @ResponseBody
+    public void upload(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request, HttpServletResponse response) {
+        response.setCharacterEncoding("UTF-8");
+        roadDataService.uploadRow(multipartFile,request,response);
     }
 
 
