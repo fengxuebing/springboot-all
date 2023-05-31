@@ -11,4 +11,6 @@ public interface RoadDataService {
     void downloadRow(HttpServletResponse response);
 
     void uploadRow(MultipartFile multipartFile, HttpServletRequest request, HttpServletResponse response);
+
+    void uploadManySheet(MultipartFile multipartFile, HttpServletRequest request, HttpServletResponse response);
 }

@@ -164,5 +164,13 @@ public class ComplexTableHeadController {
         roadDataService.uploadRow(multipartFile,request,response);
     }
 
+    // 单个文件多sheet导入
+    @RequestMapping(value = { "/easyexcel/uploadManySheet" }, produces = { "text/html;charset=UTF-8" })
+    @ResponseBody
+    public void uploadManySheet(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request, HttpServletResponse response) {
+        response.setCharacterEncoding("UTF-8");
+        roadDataService.uploadManySheet(multipartFile,request,response);
+    }
+
 
 }
